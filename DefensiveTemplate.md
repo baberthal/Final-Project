@@ -11,44 +11,59 @@
 _TODO: Fill out the information below._
 
 The following machines were identified on the network:
-- Name of VM 1
-  - **Operating System**:
-  - **Purpose**:
-  - **IP Address**:
-- Name of VM 2
-  - **Operating System**:
-  - **Purpose**:
-  - **IP Address**:
-- Etc.
+- Hypervisor / Host Machine (Not a VM)
+  - **Operating System**: Microsoft Windows
+  - **Purpose**: Hypervisor / Gateway
+  - **IP Address**: 192.168.1.1
+- ELK
+  - **Operating System**: Linux
+  - **Purpose**: Elasticsearch, Logstash, Kibana Server
+  - **IP Address**: 192.168.1.100
+- Capstone
+  - **Operating System**: Linux
+  - **Purpose**: Basic HTTP Server (this is a red herring)
+  - **IP Address**: 192.168.1.105
+- Target 1
+  - **Operating System**: Linux
+  - **Purpose**: HTTP Server (also wordpress site)
+  - **IP Address**: 192.168.1.110
+- Target 2
+  - **Operating System**: Linux
+  - **Purpose**: HTTP Server
+  - **IP Address**: 192.168.1.115
 
 ### Description of Targets
 _TODO: Answer the questions below._
 
-The target of this attack was: `Target 1` (TODO: IP Address).
+The target of this attack was: `Target 1` (`192.168.1.110`).
 
-Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
+Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are
+possible ports of entry for attackers. As such, the following alerts have been
+implemented:
+
+* [Excessive HTTP Errors](#excessive-http-errors)
+* [HTTP Request Size Monitor](#http-request-size-monitor)
+* [CPU Usage Monitor](#cpu-usage-monitor)
 
 ### Monitoring the Targets
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
-#### Name of Alert 1
-_TODO: Replace `Alert 1` with the name of the alert._
-
+#### Excessive HTTP Errors
 Alert 1 is implemented as follows:
   - **Metric**: `http.response.status_code` > 400
   - **Threshold**: 5 in last 5 minutes
   - **Vulnerability Mitigated**: TODO
   - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
 
-#### Name of Alert 2
+#### HTTP Request Size Monitor
 Alert 2 is implemented as follows:
   - **Metric**: `http.request.bytes`
   - **Threshold**: 3500 in last 1 minute
   - **Vulnerability Mitigated**: TODO
   - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
 
-#### Name of Alert 3
+#### CPU Usage Monitor
 Alert 3 is implemented as follows:
   - **Metric**: `system.process.cpu.total.pct`
   - **Threshold**: 0.5 in last 5 minutes
