@@ -53,7 +53,7 @@ Traffic to these services should be carefully monitored. To this end, we have im
 Alert 1 is implemented as follows:
   - **Metric**: `http.response.status_code` > 400
   - **Threshold**: 5 in last 5 minutes
-  - **Vulnerability Mitigated**: TODO
+  - **Vulnerability Mitigated**: Use Fail2Ban to temporarily ban any remote IP addresses with firewall rules if it generates too many 404s within a time period
   - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
 
 #### HTTP Request Size Monitor
